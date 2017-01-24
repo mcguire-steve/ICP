@@ -284,6 +284,7 @@ void downsample_cloud(float d,
   auto PointCloudEncoder = new
     pcl::io::OctreePointCloudCompression<pcl::PointXYZRGB> (compression_profile,
         true, d, d, true, 50, true, 4);
+
   auto PointCloudDecoder = new pcl::io::OctreePointCloudCompression<pcl::PointXYZRGB> ();
 
   std::stringstream compressedData;
