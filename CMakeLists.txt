@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall -Wextra")
 add_definitions(-DPROFILE)
 
 option(BUILD_ICP "Build the ICP library, requires other packages" ON)
-option(BUILD_ICP_TEST "Build the ICP library test suite, requires other packages" OFF)
+option(BUILD_ICP_TEST "Build the ICP library test suite, requires other packages" ON)
 
 if (BUILD_ICP)
    find_package(Sophus REQUIRED)
@@ -17,7 +17,7 @@ if(BUILD_ICP_TEST)
   find_package(Calibu REQUIRED)
   find_package(HAL REQUIRED)
   find_package(Pangolin REQUIRED)
-  find_package(SceneGraph REQUIRED)
+#  find_package(SceneGraph REQUIRED)
 endif()
 
 find_package(PCL REQUIRED)
@@ -70,33 +70,33 @@ if(BUILD_ICP)
   ${SceneGraph_LIBRARIES}
   )
 
-  add_executable( main src/main.cpp )
-  target_link_libraries( main icp dualquat ${PCL_LIBRARIES} )
+ # add_executable( main src/main.cpp )
+ # target_link_libraries( main icp dualquat ${PCL_LIBRARIES} )
 
-  add_executable( aggregate_pc src/aggregate_pc.cpp )
-  add_executable( make_pc src/make_pc.cpp )
-  add_executable( plot_pc src/plot_pc.cpp )
+ # add_executable( aggregate_pc src/aggregate_pc.cpp )
+ # add_executable( make_pc src/make_pc.cpp )
+ # add_executable( plot_pc src/plot_pc.cpp )
 
-  target_link_libraries( aggregate_pc
-    ${HAL_LIBRARIES}
-    ${Pangolin_LIBRARIES}
-    ${SceneGraph_LIBRARIES}
-    ${PCL_LIBRARIES}
-    )
+ # target_link_libraries( aggregate_pc
+ #   ${HAL_LIBRARIES}
+ #   ${Pangolin_LIBRARIES}
+ #   ${SceneGraph_LIBRARIES}
+ #   ${PCL_LIBRARIES}
+ #   )
 
-  target_link_libraries( make_pc
-    ${Calibu_LIBRARIES}
-    ${HAL_LIBRARIES}
-    ${Pangolin_LIBRARIES}
-    ${SceneGraph_LIBRARIES}
-    ${PCL_LIBRARIES}
-    )
+ # target_link_libraries( make_pc
+ #   ${Calibu_LIBRARIES}
+ #   ${HAL_LIBRARIES}
+ #   ${Pangolin_LIBRARIES}
+ #   ${SceneGraph_LIBRARIES}
+ #   ${PCL_LIBRARIES}
+ #   )
 
-  target_link_libraries( plot_pc
-    ${HAL_LIBRARIES}
-    ${Pangolin_LIBRARIES}
-    ${SceneGraph_LIBRARIES}
-    ${PCL_LIBRARIES}
-    )
+ # target_link_libraries( plot_pc
+ #   ${HAL_LIBRARIES}
+ #   ${Pangolin_LIBRARIES}
+ #   ${SceneGraph_LIBRARIES}
+ #   ${PCL_LIBRARIES}
+ #   )
   endif()
 endif()
